@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background: var(--color-secondary);
+  color: #fafafa;
+  height: var(--navbar-height);
+  ul {
+    display: flex;
+    gap: 2rem;
+    li {
+      list-style-type: none;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

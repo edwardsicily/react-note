@@ -4,11 +4,15 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+:root {
+  --color-primary: #084c61;
+  --color-tertiary: #e3b505;
+  --color-secondary: #56a3a6;
+
+  --navbar-height: 60px;
+}
 body,
 html {
   height: 100vh;
   margin: 0;
-}
-body {
-  padding: 0.5rem;
 }

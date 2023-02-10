@@ -2,9 +2,11 @@ import React from "react";
 import { useContext } from "react";
 import AppContext from "../store/context";
 import { FiTrash2 } from "react-icons/fi";
-import { REMOVE_NOTE } from "../store/reducers";
+import { ACTIONS } from "../store/reducers";
+import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import "./notelist.scss";
-export const NotesList = () => {
+
+export const NotesList = ({ onModalOpen }) => {
   const { state, dispatch } = useContext(AppContext);
   return (
     <div className="note-list">
@@ -13,15 +15,31 @@ export const NotesList = () => {
       {state.noteList.map((note) => {
         return (
           <div key={note.id} className="note-item">
-            <h4 className="title">{note.title}</h4>
+            <div className="note-item-top">
+              <h4 className="title">{note.title}</h4>
+              <i
+                onClick={() =>
+                  dispatch({
+                    type: ACTIONS.TOGGLE_IMPORTANT,
+                    payload: note,
+                  })
+                }
+              >
+                {note.importance ? <IoStarSharp /> : <IoStarOutline />}
+              </i>
+            </div>
+
             <p className="body">{note.body}</p>
             <div className="bottom">
               <p className="category">{note.category}</p>
-              <FiTrash2
-                onClick={() =>
-                  dispatch({ type: REMOVE_NOTE, payload: note.id })
-                }
-              />
+              <button onClick={() => onModalOpen(note.id)}>edit</button>
+              <i>
+                <FiTrash2
+                  onClick={() =>
+                    dispatch({ type: ACTIONS.REMOVE_NOTE, payload: note })
+                  }
+                />
+              </i>
             </div>
           </div>
         );

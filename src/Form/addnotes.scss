@@ -1,9 +1,40 @@
+.form-accordion {
+  padding: 2rem;
+}
+.accordion-top {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 0.6px solid lightgray;
+
+  i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s ease;
+  }
+  .closed {
+    transform: rotate(90deg);
+  }
+}
 .add-notes-form {
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
   gap: 2rem;
+  transition: all 0.6s cubic-bezier(1, 0, 1, 0);
+  height: auto;
+  max-height: 9999px;
+  opacity: 1;
 
+  &.closed {
+    transition: all 0.6s cubic-bezier(0, 1, 0, 1);
+    opacity: 0;
+    overflow: hidden;
+    max-height: 0;
+  }
   input {
     outline: none;
   }
@@ -11,10 +42,37 @@
     padding: 6px 8px;
   }
   .input-body {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  .submit-btn {
+    align-self: flex-end;
+    background: rgb(126, 190, 211);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 4px;
+    width: fit-content;
+    padding: 8px 10px;
+    cursor: pointer;
+    &:hover {
+      background: lightblue;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    }
   }
 }
 .add-bottom {
   display: flex;
   justify-content: space-between;
   padding: 0rem 1rem;
+  select {
+    outline: none;
+    padding: 4px 10px;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }

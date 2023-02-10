@@ -1,15 +1,22 @@
 .note-list {
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.6rem;
   padding: 2rem;
 
+  i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
   .note-list-title {
     margin: 0;
   }
   .note-item {
+    background: white;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -17,12 +24,21 @@
     padding: 0.5rem 0.8rem;
     border-radius: 4px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-    h4 {
-      text-transform: capitalize;
-      font-size: 1.5rem;
-      margin: 0;
-      text-align: left;
+    .note-item-top {
+      display: flex;
+      justify-content: space-between;
+      h4 {
+        text-transform: capitalize;
+        font-size: 1.5rem;
+        margin: 0;
+        text-align: left;
+      }
+      i {
+        font-size: 1.5rem;
+        color: rgb(246, 213, 0);
+      }
     }
+
     p {
       margin: 0;
     }
@@ -32,7 +48,13 @@
     }
     .bottom {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      p {
+        text-transform: capitalize;
+      }
+      i {
+        font-size: 1.2rem;
+      }
     }
   }
 }

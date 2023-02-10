@@ -1,22 +1,42 @@
-const ADD_NOTE = "ADD_NOTE";
-const REMOVE_NOTE = "REMOVE_NOTE";
+const ACTIONS = {
+  ADD_NOTE: "ADD_NOTE",
+  REMOVE_NOTE: "REMOVE_NOTE",
+  TOGGLE_IMPORTANT: "TOGGLE_IMPORTANT",
+  EDIT_NOTE: "EDIT_MODAL",
+};
 
 const noteReducer = (state, action) => {
+  console.log(state, action);
   switch (action.type) {
-    case ADD_NOTE:
+    case ACTIONS.ADD_NOTE:
       return {
         ...state,
         noteList: [...state.noteList, action.payload],
       };
-    case REMOVE_NOTE:
-      console.log(state, action);
+    case ACTIONS.REMOVE_NOTE:
       return {
         ...state,
-        noteList: state.noteList.filter((note) => note.id !== action.payload),
+        noteList: state.noteList.filter(
+          (note) => note.id !== action.payload.id
+        ),
       };
+    case ACTIONS.TOGGLE_IMPORTANT:
+      const updatedArr = state.noteList.map((note) => {
+        if (note.id != action.payload.id) return note;
+        return {
+          ...note,
+          importance: !note.importance,
+        };
+      });
+
+      return {
+        ...state,
+        noteList: updatedArr,
+      };
+
     default:
       console.log("default");
   }
 };
 
-export { noteReducer, ADD_NOTE, REMOVE_NOTE };
+export { noteReducer, ACTIONS };
