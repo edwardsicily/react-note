@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import categoryList from "../utils";
+import { categoryList } from "../utils/utils";
 import AppContext from "../store/context";
 import "./editmodal.scss";
 

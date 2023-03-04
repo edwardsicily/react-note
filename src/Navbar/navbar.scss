@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: var(--color-secondary);
   color: #fafafa;
   height: var(--navbar-height);
@@ -13,6 +14,15 @@
         text-decoration: underline;
         cursor: pointer;
       }
+    }
+  }
+  .user-info {
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    i {
+      font-size: 1.5rem;
     }
   }
 }

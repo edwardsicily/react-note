@@ -5,8 +5,8 @@ import React, {
   useSyncExternalStore,
 } from "react";
 import AppContext from "../store/context";
-import { ACTIONS } from "../store/reducers";
-import categoryList from "../utils";
+import { NOTEACTIONS } from "../store/reducers";
+import { categoryList } from "../utils/utils";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import "./addnotes.scss";
 
@@ -17,6 +17,7 @@ function AddForm() {
   const [important, setImportant] = useState(false);
   const { dispatch } = useContext(AppContext);
   const [accordion, setAccordion] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({

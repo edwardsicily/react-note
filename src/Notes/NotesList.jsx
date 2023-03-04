@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import AppContext from "../store/context";
 import { FiTrash2 } from "react-icons/fi";
-import { ACTIONS } from "../store/reducers";
+import { NOTEACTIONS } from "../store/reducers";
 import { IoStarOutline, IoStarSharp } from "react-icons/io5";
 import "./notelist.scss";
 

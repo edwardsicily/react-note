@@ -1,0 +1,14 @@
+.pill-filter {
+  border-radius: 20px;
+  border: 1px solid var(--color-secondary);
+  background: transparent;
+  padding: 6px 10px;
+  cursor: pointer;
+  order: 2;
+}
+
+.active {
+  order: 1;
+  color: white;
+  background: var(--color-secondary);
+}

@@ -1,0 +1,25 @@
+.todo-main {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-item-wrapper {
+  min-height: 768px;
+  width: 768px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 2rem;
+}
+.error {
+  color: rgb(208, 3, 3);
+  font-weight: bold;
+}

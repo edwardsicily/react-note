@@ -1,0 +1,19 @@
+.login-wrapper {
+  width: 350px;
+  padding: 2rem;
+  outline: 1px solid black;
+  border-radius: 4px;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    label {
+      display: flex;
+      flex-direction: column;
+      input {
+        outline: none;
+      }
+    }
+  }
+}

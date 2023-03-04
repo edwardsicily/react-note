@@ -1,34 +1,40 @@
-import { useReducer, useState } from "react";
-import Layout from "./Layout/Layout";
+import { useReducer, useState, useEffect } from "react";
+import { isTokenExpired } from "./utils/utils";
 import AppContext from "./store/context";
-import AddForm from "./Form/AddForm";
-import { noteReducer } from "./store/reducers";
+import { Route, Routes } from "react-router-dom";
+import { noteReducer, USERACTIONS, OTHERACTIONS } from "./store/reducers";
 import "./App.css";
 import initialState from "./store/initialState";
-import { NotesList } from "./Notes/NotesList";
-import EditModal from "./Modal/EditModal";
+import Home from "./Pages/Home/Home";
+import Notes from "./Pages/Notes/Notes";
+import Todo from "./Pages/Todo/Todo";
+import Auth from "./Pages/Auth/Auth";
 
 function App() {
   const [state, dispatch] = useReducer(noteReducer, initialState);
-  const [editModal, setEditModal] = useState(true);
-  const [selectedObjId, setSelectedObjId] = useState(null);
 
-  const onModalOpen = (id) => {
-    setSelectedObjId(id);
-    setEditModal(true);
-  };
+  useEffect(() => {
+    const rawuserData = localStorage.getItem("userData");
+    const userData = JSON.parse(rawuserData);
+    if (!userData) return;
+    if (!isTokenExpired(userData.token)) {
+      dispatch({ type: USERACTIONS.SET_USER, payload: userData });
+      if (state.isSessionExpired)
+        dispatch({ type: OTHERACTIONS.SET_SESSION_EXPIRED, payload: false });
+    } else {
+      dispatch({ type: OTHERACTIONS.SET_SESSION_EXPIRED, payload: true }); //session expired
+      dispatch({ type: USERACTIONS.LOGOUT_USER });
+    }
+  }, []);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      {editModal && (
-        <EditModal setEditModal={setEditModal} id={selectedObjId} />
-      )}
-      <Layout>
-        <div className="main-wrapper">
-          <AddForm />
-          <NotesList onModalOpen={onModalOpen} />
-        </div>
-      </Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/todo" element={<Todo />} />
+        <Route path="*" element={<h2>Not found</h2>} />
+      </Routes>
     </AppContext.Provider>
   );
 }

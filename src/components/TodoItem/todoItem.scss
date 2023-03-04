@@ -1,0 +1,45 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 4px;
+  outline: 1px solid var(--color-secondary);
+
+  .todo-item-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    h4 {
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  .todo-item-btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    button {
+      cursor: pointer;
+      border: none;
+      padding: 8px 12px;
+    }
+  }
+
+  i {
+    padding: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    &:hover {
+      background: rgba($color: #242424, $alpha: 0.1);
+    }
+  }
+}
